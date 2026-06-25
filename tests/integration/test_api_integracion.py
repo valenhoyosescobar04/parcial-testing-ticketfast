@@ -11,10 +11,8 @@ def test_crear_reserva_retorna_201_y_persiste_en_db(client_con_bd, db_session):
 
     respuesta = client_con_bd.post("/reservas/concierto-2026", json=payload)
 
-    # Assert 1: codigo de estado HTTP 201
     assert respuesta.status_code == 201
 
-    # Assert 2: el registro existe en la base de datos
     reserva_en_db = db_session.query(ReservaDB).filter(
         ReservaDB.cliente_email == "test@correo.com"
     ).first()

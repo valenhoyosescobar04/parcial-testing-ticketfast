@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -8,7 +9,9 @@ from pydantic import BaseModel
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
+    # Solo ejecuta init_db si hay DATABASE_URL configurada (entorno Docker)
+    if os.getenv("DATABASE_URL"):
+        init_db()
     yield
 
 

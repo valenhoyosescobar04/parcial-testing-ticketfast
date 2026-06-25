@@ -8,7 +8,7 @@ from src.database.models import Base
 from src.database.config import get_db
 from src.reservas.api import app
 
-# Fix para Windows con Docker Desktop
+
 os.environ["TESTCONTAINERS_RYUK_DISABLED"] = "true"
 
 

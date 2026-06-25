@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input data-testid="input-email-cliente" type="text" />
+  <input data-testid="select-zona-evento" type="text" />
+  <input data-testid="input-cantidad-asientos" type="number" />
+  <button data-testid="btn-confirmar-reserva" onclick="calcular()">Confirmar</button>
+  <div data-testid="seccion-resumen-total"></div>
+
+  <script>
+    const PRECIOS = { "VIP": 150000, "General": 50000 };
+
+    function calcular() {
+      const zona = document.querySelector('[data-testid="select-zona-evento"]').value;
+      const cantidad = parseInt(document.querySelector('[data-testid="input-cantidad-asientos"]').value);
+      const total = PRECIOS[zona] * cantidad;
+      document.querySelector('[data-testid="seccion-resumen-total"]').innerText =
+        total.toLocaleString("es-CO");
+    }
+  </script>
+</body>
+</html>
